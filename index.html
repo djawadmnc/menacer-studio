@@ -37,10 +37,11 @@
 
         /* Typography */
         h1 {
-            font-size: 4.5rem;
+            font-size: 5.5rem;
             font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.05;
+            letter-spacing: -3px;
+            line-height: 1;
+            white-space: nowrap;
         }
 
         h2 {
@@ -101,14 +102,14 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 50% 50%, rgba(0, 217, 255, 0.15) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 60%);
             z-index: 1;
             animation: depthPulse 8s ease-in-out infinite;
         }
 
         @keyframes depthPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+            0%, 100% { opacity: 0.05; }
+            50% { opacity: 0.15; }
         }
 
         .hero::after {
@@ -116,11 +117,12 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0, 217, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 217, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(0, 217, 255, 0.008) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.008) 1px, transparent 1px);
             background-size: 80px 80px;
             animation: gridFlow 20s linear infinite;
             z-index: 1;
+            opacity: 0.4;
         }
 
         @keyframes gridFlow {
@@ -132,8 +134,9 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            max-width: 1000px;
+            max-width: 100%;
             padding: 0 3rem;
+            width: 100%;
         }
 
         .hero h1 {
@@ -156,11 +159,15 @@
         }
 
         .hero .tagline {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.65);
-            letter-spacing: 1.2px;
-            font-weight: 300;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.8px;
+            font-weight: 400;
             margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
             opacity: 0;
             animation: cinematicReveal 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
         }
@@ -405,8 +412,8 @@
         .about-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 217, 255, 0.03) 100%);
-            border: 1px solid rgba(0, 217, 255, 0.15);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.04) 0%, rgba(0, 217, 255, 0.01) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.1);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -454,16 +461,16 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.04) 25%, rgba(0, 217, 255, 0.04) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.04) 75%, rgba(0, 217, 255, 0.04) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.04) 25%, rgba(0, 217, 255, 0.04) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.04) 75%, rgba(0, 217, 255, 0.04) 76%, transparent 77%, transparent);
+                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.01) 25%, rgba(0, 217, 255, 0.01) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.01) 75%, rgba(0, 217, 255, 0.01) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.01) 25%, rgba(0, 217, 255, 0.01) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.01) 75%, rgba(0, 217, 255, 0.01) 76%, transparent 77%, transparent);
             background-size: 60px 60px;
             animation: gridPulse 25s ease-in-out infinite;
-            opacity: 0.5;
+            opacity: 0.2;
         }
 
         @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
         }
 
         .services .container {
@@ -535,8 +542,8 @@
 
         .service-card {
             padding: 3rem;
-            border: 1px solid rgba(0, 217, 255, 0.18);
-            background: linear-gradient(135deg, rgba(26, 31, 58, 0.4) 0%, rgba(10, 14, 39, 0.6) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.12);
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.15) 0%, rgba(10, 14, 39, 0.2) 100%);
             position: relative;
             overflow: hidden;
             opacity: 0;
@@ -638,8 +645,8 @@
         .work-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12) 0%, rgba(0, 217, 255, 0.04) 100%);
-            border: 1px solid rgba(0, 217, 255, 0.18);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 217, 255, 0.01) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -653,7 +660,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.1) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.02) 50%, transparent 70%);
             animation: lightSweep 4s ease-in-out infinite;
         }
 
@@ -696,9 +703,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 14, 39, 0.4) 0%, rgba(5, 8, 18, 0.45) 50%, rgba(10, 14, 39, 0.4) 100%);
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.15) 0%, rgba(5, 8, 18, 0.2) 50%, rgba(10, 14, 39, 0.15) 100%);
             z-index: 1;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(2px);
         }
 
         .logo-folio .container {
@@ -714,10 +721,10 @@
 
         .logo-item {
             aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(0, 217, 255, 0.02) 100%);
-            border: 1px solid rgba(0, 217, 255, 0.12);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.03) 0%, rgba(0, 217, 255, 0.01) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.08);
             display: flex;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(4px);
             align-items: center;
             justify-content: center;
             position: relative;
@@ -872,15 +879,15 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(0, 217, 255, 0.12) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 50%, rgba(0, 217, 255, 0.08) 0%, transparent 40%);
+                radial-gradient(ellipse at 20% 50%, rgba(0, 217, 255, 0.04) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 50%, rgba(0, 217, 255, 0.03) 0%, transparent 40%);
             z-index: 1;
             animation: depthShift 12s ease-in-out infinite;
         }
 
         @keyframes depthShift {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.25; }
         }
 
         .process::after {
@@ -888,10 +895,10 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.02) 25%, rgba(0, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.02) 75%, rgba(0, 217, 255, 0.02) 76%, transparent 77%, transparent);
+                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.008) 25%, rgba(0, 217, 255, 0.008) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.008) 75%, rgba(0, 217, 255, 0.008) 76%, transparent 77%, transparent);
             background-size: 120px 120px;
             animation: textureFlow 25s linear infinite;
-            opacity: 0.3;
+            opacity: 0.15;
             z-index: 0;
         }
 
@@ -998,7 +1005,7 @@
         /* ==================== FINAL ACT: CONTACT ==================== */
         .contact {
             position: relative;
-            padding: 14rem 3rem;
+            padding: 12rem 3rem;
             background: url('images/2.png') center/cover no-repeat fixed;
             clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%);
             text-align: center;
@@ -1009,7 +1016,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(10, 14, 39, 0.55);
+            background: rgba(10, 14, 39, 0.3);
             z-index: 1;
         }
 
@@ -1018,7 +1025,7 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
             z-index: 2;
             animation: radiusExpand 8s ease-in-out infinite;
         }
@@ -1060,20 +1067,42 @@
             animation: cinematicReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
         }
 
-        .contact .cta-button {
-            animation: cinematicReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
+        /* Contact Intro Section */
+        .contact-intro {
+            margin-bottom: 2rem;
         }
 
-        /* Contact Form Section */
-        .contact-form-section {
-            position: relative;
-            padding: 12rem 3rem;
-            background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
-            clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
-            animation: fadeInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        .contact-intro h2 {
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            opacity: 0;
+            animation: climaxReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
         }
 
-        @keyframes fadeInDown {
+        .contact-intro p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: cinematicReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+        }
+
+        /* Contact Form Inline */
+        .contact-form-inline {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .contact-form-inline h3 {
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(40px);
@@ -1082,17 +1111,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .contact-form-section .container {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-form-section h3 {
-            margin-bottom: 2rem;
-            text-align: center;
         }
 
         #contactForm {
@@ -1273,8 +1291,25 @@
                 text-align: center;
             }
 
-            h1 { font-size: 2.5rem; }
+            h1 {
+                font-size: 2.2rem;
+                white-space: nowrap;
+                letter-spacing: -2px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
             h2 { font-size: 2rem; }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                white-space: nowrap;
+                letter-spacing: -2px;
+            }
+
+            .hero .tagline {
+                font-size: 0.95rem;
+                letter-spacing: 0.5px;
+            }
 
             section { padding: 6rem 1.5rem !important; }
 
@@ -1316,7 +1351,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>MENACER STUDIO</h1>
-            <p class="tagline">We build brands that feel clear, sharp, and impossible to ignore. Identity systems crafted for companies that want more than decoration.</p>
+            <p class="tagline">Identity systems that create clarity, trust, and long-term recognition.</p>
             <div class="scroll-prompt">
                 <div class="scroll-prompt-text">Scroll to explore</div>
                 <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
@@ -1505,62 +1540,58 @@
     <!-- FINAL ACT: Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Your Brand Already Says Something. The Question Is Whether People Remember It.</h2>
-            <p>If you're building something serious, let's create an identity that gives it the presence to match.</p>
-            <button class="cta-button" onclick="openContactForm()">
-                <span>Start The Conversation</span>
-            </button>
-        </div>
-    </section>
+            <div class="contact-intro">
+                <h2>Your Brand Already Says Something. The Question Is Whether People Remember It.</h2>
+                <p>If you're building something serious, let's create an identity that gives it the presence to match.</p>
+            </div>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form-section" id="contactFormSection" style="display: none;">
-        <div class="container">
-            <h3>Let's Build Something Real</h3>
-            <p style="text-align: center; color: rgba(255, 255, 255, 0.65); margin-bottom: 3rem; font-size: 0.95rem;">Tell us about your project, your goals, and where you want the brand to go next.</p>
-            <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-row">
-                    <input type="text" placeholder="First Name" name="firstName" required>
-                    <input type="text" placeholder="Last Name" name="lastName" required>
-                </div>
-                <div class="form-row">
-                    <input type="email" placeholder="Email Address" name="email" required>
-                    <input type="tel" placeholder="Phone Number" name="phone" required>
-                </div>
+            <div class="contact-form-inline" style="margin-top: 6rem;">
+                <h3>Let's Build Something Real</h3>
+                <p style="text-align: center; color: rgba(255, 255, 255, 0.65); margin-bottom: 3rem; font-size: 0.95rem;">Tell us about your project, your goals, and where you want the brand to go next.</p>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <input type="text" placeholder="First Name" name="firstName" required>
+                        <input type="text" placeholder="Last Name" name="lastName" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" placeholder="Email Address" name="email" required>
+                        <input type="tel" placeholder="Phone Number" name="phone" required>
+                    </div>
 
-                <div class="service-selection">
-                    <label>Select Your Service</label>
-                    <div class="service-options">
-                        <div class="service-option">
-                            <input type="radio" id="service1" name="service" value="Brand Strategy" required>
-                            <label for="service1">
-                                <div class="service-title">Brand Strategy</div>
-                                <div class="service-desc">Positioning & visual direction</div>
-                            </label>
-                        </div>
-                        <div class="service-option featured">
-                            <input type="radio" id="service2" name="service" value="Full Identity System" required>
-                            <label for="service2">
-                                <div class="service-badge">Most Popular</div>
-                                <div class="service-title">Full Identity System</div>
-                                <div class="service-desc">Complete brand architecture</div>
-                            </label>
-                        </div>
-                        <div class="service-option">
-                            <input type="radio" id="service3" name="service" value="Design System" required>
-                            <label for="service3">
-                                <div class="service-title">Design System</div>
-                                <div class="service-desc">Guidelines & scalable components</div>
-                            </label>
+                    <div class="service-selection">
+                        <label>Select Your Service</label>
+                        <div class="service-options">
+                            <div class="service-option">
+                                <input type="radio" id="service1" name="service" value="Brand Strategy" required>
+                                <label for="service1">
+                                    <div class="service-title">Brand Strategy</div>
+                                    <div class="service-desc">Positioning & visual direction</div>
+                                </label>
+                            </div>
+                            <div class="service-option featured">
+                                <input type="radio" id="service2" name="service" value="Full Identity System" required>
+                                <label for="service2">
+                                    <div class="service-badge">Most Popular</div>
+                                    <div class="service-title">Full Identity System</div>
+                                    <div class="service-desc">Complete brand architecture</div>
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="radio" id="service3" name="service" value="Design System" required>
+                                <label for="service3">
+                                    <div class="service-title">Design System</div>
+                                    <div class="service-desc">Guidelines & scalable components</div>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-buttons">
-                    <button type="submit" class="form-submit">Send Inquiry</button>
-                    <button type="button" class="form-cancel" onclick="closeContactForm()">Cancel</button>
-                </div>
-            </form>
+                    <div class="form-buttons">
+                        <button type="submit" class="form-submit">Send Inquiry</button>
+                        <button type="button" class="form-cancel" onclick="clearContactForm()">Clear</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1723,15 +1754,7 @@
         }
 
         // Contact Form Functions
-        function openContactForm() {
-            const formSection = document.getElementById('contactFormSection');
-            formSection.style.display = 'block';
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function closeContactForm() {
-            const formSection = document.getElementById('contactFormSection');
-            formSection.style.display = 'none';
+        function clearContactForm() {
             document.getElementById('contactForm').reset();
         }
 
@@ -1752,9 +1775,8 @@
             // Show success message
             alert(`Thank you for your inquiry!\n\nService: ${formData.service}\n\nWe'll get back to you soon at ${formData.email}`);
 
-            // Reset form and hide
+            // Reset form
             document.getElementById('contactForm').reset();
-            closeContactForm();
         }
     </script>
 </body>
