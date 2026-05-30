@@ -260,6 +260,81 @@
             border-color: rgba(0, 217, 255, 1);
         }
 
+        /* Swipe Down Arrow */
+        .swipe-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 4rem;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s forwards;
+        }
+
+        .arrow-chevron {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arrow-chevron:nth-child(1) {
+            width: 100px;
+            height: 100px;
+        }
+
+        .arrow-chevron:nth-child(2) {
+            width: 90px;
+            height: 90px;
+        }
+
+        .arrow-chevron svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--cyan);
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.5));
+        }
+
+        .arrow-chevron:nth-child(1) {
+            animation: scrollPulse 2s ease-in-out infinite 0s;
+        }
+
+        .arrow-chevron:nth-child(2) {
+            animation: scrollPulse 2s ease-in-out infinite 0.2s;
+        }
+
+        .arrow-chevron:nth-child(3) {
+            animation: scrollPulse 2s ease-in-out infinite 0.4s;
+        }
+
+        @keyframes scrollPulse {
+            0%, 10%, 20%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(16px);
+            }
+        }
+
+        .swipe-arrow:hover .arrow-chevron {
+            animation: none !important;
+            opacity: 1;
+        }
+
+        .swipe-arrow:hover .arrow-chevron svg {
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.9));
+            stroke-width: 2.5;
+        }
+
         /* Contact Section Button Override */
         .contact .cta-button {
             width: auto;
@@ -305,11 +380,7 @@
         .about {
             position: relative;
             padding: 12rem 3rem;
-            background: linear-gradient(180deg,
-                var(--navy) 0%,
-                var(--navy-deep) 30%,
-                var(--navy-light) 70%,
-                var(--navy) 100%);
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-light) 100%);
             clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
         }
 
@@ -318,23 +389,9 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at 20% 40%, rgba(0, 217, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 60%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 40%, rgba(0, 217, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, rgba(0, 217, 255, 0.04) 0%, transparent 50%);
             z-index: 1;
-        }
-
-        .about::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/></filter><rect fill="rgba(0,217,255,0.01)" width="100%" height="100%" filter="url(%23n)"/></svg>');
-            background-size: 300px 300px;
-            animation: textureShift 30s linear infinite;
-        }
-
-        @keyframes textureShift {
-            0% { background-position: 0 0; }
-            100% { background-position: 300px 300px; }
         }
 
         .about .container {
@@ -1006,7 +1063,7 @@
         .contact {
             position: relative;
             padding: 0;
-            background: linear-gradient(180deg, #050816 0%, #0B1026 50%, #050816 100%);
+            background: url('images/2.png') center/cover no-repeat fixed;
             clip-path: none;
             overflow: hidden;
             min-height: 100vh;
@@ -1015,22 +1072,13 @@
             justify-content: center;
         }
 
-        /* Animated grid background */
         .contact::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent);
-            background-size: 100px 100px;
-            animation: gridDrift 40s linear infinite;
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.15) 0%, rgba(5, 8, 18, 0.2) 50%, rgba(10, 14, 39, 0.15) 100%);
             z-index: 1;
-        }
-
-        @keyframes gridDrift {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
+            backdrop-filter: blur(2px);
         }
 
         /* Volumetric lighting effect */
@@ -1611,11 +1659,22 @@
         <div class="hero-content">
             <h1>MENACER STUDIO</h1>
             <p class="tagline">Identity systems that create clarity, trust, and long-term recognition.</p>
-            <div class="scroll-prompt">
-                <div class="scroll-prompt-text">Scroll to explore</div>
-                <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-                    <span>↓</span>
-                </button>
+            <div class="swipe-arrow" onclick="document.querySelector('.logo-folio').scrollIntoView({behavior:'smooth'})">
+                <div class="arrow-chevron">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="arrow-chevron">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="arrow-chevron">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -1653,44 +1712,23 @@
         </div>
     </section>
 
-    <!-- ACT III: Emergence -->
-    <section class="services" id="services">
+    <!-- ACT III: Gallery -->
+    <section class="logo-folio">
         <div class="container">
             <div class="section-header">
-                <span class="label">What We Build</span>
-                <h2>Services Designed Around Growth</h2>
-                <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.7); margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">A strong identity is not one logo. It's the way every detail works together when people experience your brand.</p>
+                <span class="label">Services</span>
+                <h2>Systems Built For Modern Brands</h2>
+                <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.7); margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">We design identity, digital presence, and brand communication systems engineered to create trust, clarity, and long-term recognition.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Brand Identity</h3>
-                    <p>Strategic visual identities designed to give businesses recognition, consistency, and presence across every platform.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Logo Design</h3>
-                    <p>Distinct marks built with simplicity, balance, and long-term usability in mind — not temporary trends.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Website Design</h3>
-                    <p>Modern digital experiences focused on clarity, interaction, and conversion without unnecessary complexity.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Brand Strategy</h3>
-                    <p>Positioning, direction, messaging, and structure that help brands stand out in crowded markets.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Social Media Systems</h3>
-                    <p>Visual systems and content direction that keep brands consistent while staying flexible for growth.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Packaging & Print</h3>
-                    <p>Physical brand applications designed with the same level of clarity as the digital experience.</p>
-                </div>
+            <div class="logo-grid" id="logoGrid">
+                <div class="logo-item" onclick="expandCard(this, 'Ourvita')" style="background: url('images/services/1.png') center/cover no-repeat;"><div class="logo-name">Brand Identity Systems</div><div class="expanded-content"></div></div>
+                <div class="logo-item" onclick="expandCard(this, 'Poppy')" style="background: url('images/services/2.png') center/cover no-repeat;"><div class="logo-name">Digital Experiences</div><div class="expanded-content"></div></div>
+                <div class="logo-item" onclick="expandCard(this, 'Epic Store')" style="background: url('images/services/3.png') center/cover no-repeat;"><div class="logo-name">Content Systems</div><div class="expanded-content"></div></div>
             </div>
         </div>
     </section>
 
-    <!-- ACT IV: Climax -->
+    <!-- ACT IV: Work -->
     <section class="work" id="work">
         <div class="container">
             <div class="section-header">
@@ -1748,23 +1786,7 @@
         </div>
     </section>
 
-    <!-- ACT V: Gallery -->
-    <section class="logo-folio">
-        <div class="container">
-            <div class="section-header">
-                <span class="label">Services</span>
-                <h2>Systems Built For Modern Brands</h2>
-                <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.7); margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">We design identity, digital presence, and brand communication systems engineered to create trust, clarity, and long-term recognition.</p>
-            </div>
-            <div class="logo-grid" id="logoGrid">
-                <div class="logo-item" onclick="expandCard(this, 'Ourvita')" style="background: url('images/services/1.png') center/cover no-repeat;"><div class="logo-name">Brand Identity Systems</div><div class="expanded-content"></div></div>
-                <div class="logo-item" onclick="expandCard(this, 'Poppy')" style="background: url('images/services/2.png') center/cover no-repeat;"><div class="logo-name">Digital Experiences</div><div class="expanded-content"></div></div>
-                <div class="logo-item" onclick="expandCard(this, 'Epic Store')" style="background: url('images/services/3.png') center/cover no-repeat;"><div class="logo-name">Content Systems</div><div class="expanded-content"></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACT VI: Resolution -->
+    <!-- ACT V: Process -->
     <section class="process">
         <div class="container">
             <div class="section-header">
