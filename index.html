@@ -1002,104 +1002,116 @@
             line-height: 1.6;
         }
 
-        /* ==================== FINAL ACT: CONTACT ==================== */
+        /* ==================== FINAL ACT: PROJECT INITIATION TERMINAL ==================== */
         .contact {
             position: relative;
-            padding: 12rem 3rem;
-            background: url('images/2.png') center/cover no-repeat fixed;
-            clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%);
-            text-align: center;
+            padding: 0;
+            background: linear-gradient(180deg, #050816 0%, #0B1026 50%, #050816 100%);
+            clip-path: none;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .contact::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(10, 14, 39, 0.3);
-            z-index: 1;
-        }
-
+        /* Animated grid background */
         .contact::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
-            z-index: 2;
-            animation: radiusExpand 8s ease-in-out infinite;
+            background-image:
+                linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent);
+            background-size: 100px 100px;
+            animation: gridDrift 40s linear infinite;
+            z-index: 1;
         }
 
-        @keyframes radiusExpand {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes gridDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        /* Volumetric lighting effect */
+        .contact::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 217, 255, 0.08) 0%, transparent 60%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .contact .container {
             position: relative;
             z-index: 3;
-            max-width: 800px;
+            max-width: 900px;
+            padding: 4rem;
         }
 
+        /* Section Headline */
         .contact h2 {
-            margin-bottom: 2rem;
             font-size: 4rem;
-            opacity: 0;
-            animation: climaxReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-        }
-
-        @keyframes climaxReveal {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-            color: rgba(255, 255, 255, 0.8);
-            opacity: 0;
-            animation: cinematicReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
-        }
-
-        /* Contact Intro Section */
-        .contact-intro {
-            margin-bottom: 2rem;
-        }
-
-        .contact-intro h2 {
-            margin-bottom: 2rem;
-            font-size: 3rem;
-            opacity: 0;
-            animation: climaxReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-        }
-
-        .contact-intro p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-            opacity: 0;
-            animation: cinematicReveal 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
-        }
-
-        /* Contact Form Inline */
-        .contact-form-inline {
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1s forwards;
-        }
-
-        .contact-form-inline h3 {
-            margin-bottom: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
             text-align: center;
-            font-size: 2rem;
+            opacity: 0;
+            animation: cinematicReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(0, 217, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Section Subheading */
+        .contact > .container > p:first-of-type {
+            font-size: 1.1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+            line-height: 1.7;
+        }
+
+        /* Supporting text */
+        .contact-supporting-text {
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(0, 217, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Left/Right removed - single centered layout */
+        .contact-wrapper {
+            display: block;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .contact-left {
+            display: none;
+        }
+
+        .contact-right {
+            flex: none;
+            width: 100%;
+            opacity: 1;
+        }
+
+        .contact-right h3 {
+            display: none;
+        }
+
+        /* Contact intro section styling */
+        .contact-intro {
+            display: none;
         }
 
         @keyframes fadeInUp {
@@ -1122,24 +1134,25 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         #contactForm input[type="text"],
-        #contactForm input[type="email"],
-        #contactForm input[type="tel"] {
+        #contactForm input[type="email"] {
             background: rgba(0, 217, 255, 0.05);
             border: 1px solid rgba(0, 217, 255, 0.2);
-            padding: 0.9rem;
+            padding: 1.4rem 1.2rem;
             color: var(--white);
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            border-radius: 4px;
+            width: 100%;
         }
 
         #contactForm input[type="text"]::placeholder,
-        #contactForm input[type="email"]::placeholder,
-        #contactForm input[type="tel"]::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+        #contactForm input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         #contactForm input:focus {
@@ -1189,80 +1202,295 @@
         }
 
         .service-option input[type="radio"]:checked + label {
-            background: rgba(0, 217, 255, 0.2);
-            border-color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, rgba(0, 217, 255, 0.12) 100%);
+            border: 2px solid var(--cyan);
+            box-shadow:
+                0 0 60px rgba(0, 217, 255, 0.6),
+                0 0 30px rgba(0, 217, 255, 0.4) inset,
+                0 20px 50px rgba(0, 217, 255, 0.2);
+            transform: translateY(-8px) scale(1.08);
+            padding: 2.4rem 2rem;
+        }
+
+        .service-option input[type="radio"]:checked + label::before {
+            opacity: 1;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, transparent 100%);
+        }
+
+        .service-option input[type="radio"]:checked + label .service-title {
+            color: var(--cyan);
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .service-option input[type="radio"]:checked + label .service-desc {
+            color: rgba(0, 217, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .service-option input[type="radio"]:checked + label::after {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            width: 28px;
+            height: 28px;
+            background: var(--cyan);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
         }
 
         .service-option.featured label {
-            border-color: var(--cyan);
-            background: rgba(0, 217, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.2);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.06) 0%, rgba(0, 217, 255, 0.02) 100%);
         }
 
-        .service-option.featured input[type="radio"]:checked + label {
-            background: rgba(0, 217, 255, 0.25);
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+        .service-option.featured:hover label {
+            border-color: rgba(0, 217, 255, 0.4);
+        }
+
+        .service-option label::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-option label > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-option:hover label {
+            border-color: rgba(0, 217, 255, 0.3);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 217, 255, 0.02) 100%);
+        }
+
+        .service-option:hover label::before {
+            opacity: 1;
         }
 
         .service-badge {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--cyan);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            display: block;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
         }
 
         .service-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.3px;
+            transition: all 0.4s ease;
         }
 
         .service-desc {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.5;
+            transition: all 0.4s ease;
         }
 
         .form-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            align-items: center;
         }
 
         .form-submit,
         .form-cancel {
-            padding: 1rem;
+            padding: 1.3rem 3rem;
             border: none;
             font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
+            border-radius: 2px;
         }
 
         .form-submit {
             background: var(--cyan);
             color: var(--navy);
+            position: relative;
+            width: fit-content;
+            min-width: 280px;
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 2px;
         }
 
         .form-submit:hover {
-            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
-            transform: translateY(-2px);
+            box-shadow:
+                0 0 50px rgba(0, 217, 255, 0.8),
+                0 20px 60px rgba(0, 217, 255, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .form-submit:hover::before {
+            opacity: 1;
+        }
+
+        /* Pulse animation behind button */
+        @keyframes submitPulse {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(0, 217, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 70px rgba(0, 217, 255, 0.8);
+            }
+        }
+
+        .form-submit {
+            animation: submitPulse 3s ease-in-out infinite;
         }
 
         .form-cancel {
             background: transparent;
-            color: var(--cyan);
-            border: 1px solid rgba(0, 217, 255, 0.3);
+            color: rgba(0, 217, 255, 0.8);
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            width: fit-content;
         }
 
         .form-cancel:hover {
             border-color: var(--cyan);
-            background: rgba(0, 217, 255, 0.1);
+            background: rgba(0, 217, 255, 0.08);
+            color: var(--cyan);
+        }
+
+        /* Response indicator */
+        .form-response-indicator {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(0, 217, 255, 0.7);
+            margin-top: 1.5rem;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+        }
+
+        /* Trust indicators */
+        .form-trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.4s forwards;
+        }
+
+        .trust-indicator {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(0, 217, 255, 0.6);
+            letter-spacing: 0.5px;
+        }
+
+        .trust-indicator-icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: rgba(0, 217, 255, 0.5);
+        }
+
+        /* Form Error Messages */
+        .form-error {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #contactForm input.error {
+            border-color: #ff6b6b !important;
+            background: rgba(255, 107, 107, 0.05) !important;
+        }
+
+        .service-selection.error .service-options {
+            margin-bottom: 0.5rem;
+        }
+
+        .service-selection.error .form-error {
+            margin-top: 1rem;
+        }
+
+        /* Enhanced Selected Service Styling */
+        .service-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.35) 0%, rgba(0, 217, 255, 0.25) 100%);
+            border-color: var(--cyan);
+            border-width: 3px;
+            box-shadow:
+                0 0 40px rgba(0, 217, 255, 0.5),
+                inset 0 0 20px rgba(0, 217, 255, 0.15);
+            transform: scale(1.05);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-option input[type="radio"]:checked + label .service-title {
+            color: var(--cyan);
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+        }
+
+        .service-option input[type="radio"]:checked + label::after {
+            content: '✓';
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            width: 24px;
+            height: 24px;
+            background: var(--cyan);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.8rem;
         }
 
         /* Footer */
@@ -1341,6 +1569,37 @@
 
             .contact h2 {
                 font-size: 2.2rem;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+                gap: 3rem;
+                align-items: stretch;
+            }
+
+            .contact-left {
+                text-align: center;
+            }
+
+            .contact-left h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-right h3 {
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .service-options {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
         }
     </style>
@@ -1537,60 +1796,84 @@
         </div>
     </section>
 
-    <!-- FINAL ACT: Contact -->
+    <!-- FINAL ACT: PROJECT INITIATION TERMINAL -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="contact-intro">
-                <h2>Your Brand Already Says Something. The Question Is Whether People Remember It.</h2>
-                <p>If you're building something serious, let's create an identity that gives it the presence to match.</p>
-            </div>
+            <h2>Start The Signal</h2>
+            <p>We partner with ambitious brands that want clarity, presence, and systems designed for growth.</p>
+            <div class="contact-supporting-text">Every project begins with strategy, not decoration.</div>
 
-            <div class="contact-form-inline" style="margin-top: 6rem;">
-                <h3>Let's Build Something Real</h3>
-                <p style="text-align: center; color: rgba(255, 255, 255, 0.65); margin-bottom: 3rem; font-size: 0.95rem;">Tell us about your project, your goals, and where you want the brand to go next.</p>
-                <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-row">
-                        <input type="text" placeholder="First Name" name="firstName" required>
-                        <input type="text" placeholder="Last Name" name="lastName" required>
-                    </div>
-                    <div class="form-row">
-                        <input type="email" placeholder="Email Address" name="email" required>
-                        <input type="tel" placeholder="Phone Number" name="phone" required>
+            <div class="contact-wrapper">
+                <!-- Form -->
+                <div class="contact-right">
+
+                    <!-- Success Message -->
+                    <div id="successMessage" style="display: none; padding: 1.5rem; background: rgba(0, 217, 255, 0.1); border: 1px solid rgba(0, 217, 255, 0.3); border-radius: 4px; margin-bottom: 2rem; text-align: center; color: rgba(0, 217, 255, 0.9); font-weight: 600;">
+                        ✓ Thank you for your inquiry. We'll be in touch within 24 hours.
                     </div>
 
-                    <div class="service-selection">
-                        <label>Select Your Service</label>
-                        <div class="service-options">
-                            <div class="service-option">
-                                <input type="radio" id="service1" name="service" value="Brand Strategy" required>
-                                <label for="service1">
-                                    <div class="service-title">Brand Strategy</div>
-                                    <div class="service-desc">Positioning & visual direction</div>
-                                </label>
+                    <form id="contactForm" action="https://formspree.io/f/mjgzzwzj" method="POST">
+                        <!-- Formspree configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_redirect" value="javascript:void(0)">
+
+                        <div class="form-row">
+                            <div>
+                                <input type="text" placeholder="Name" name="firstName" required>
+                                <div class="form-error firstName-error">Name is required</div>
                             </div>
-                            <div class="service-option featured">
-                                <input type="radio" id="service2" name="service" value="Full Identity System" required>
-                                <label for="service2">
-                                    <div class="service-badge">Most Popular</div>
-                                    <div class="service-title">Full Identity System</div>
-                                    <div class="service-desc">Complete brand architecture</div>
-                                </label>
-                            </div>
-                            <div class="service-option">
-                                <input type="radio" id="service3" name="service" value="Design System" required>
-                                <label for="service3">
-                                    <div class="service-title">Design System</div>
-                                    <div class="service-desc">Guidelines & scalable components</div>
-                                </label>
+                            <div>
+                                <input type="email" placeholder="Email" name="email" required>
+                                <div class="form-error email-error">Valid email is required</div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-buttons">
-                        <button type="submit" class="form-submit">Send Inquiry</button>
-                        <button type="button" class="form-cancel" onclick="clearContactForm()">Clear</button>
-                    </div>
-                </form>
+                        <div class="service-selection">
+                            <label>Select Your Operational Mode</label>
+                            <div class="service-options">
+                                <div class="service-option">
+                                    <input type="radio" id="service1" name="service" value="Brand Strategy" required>
+                                    <label for="service1">
+                                        <div class="service-title">Brand Strategy</div>
+                                        <div class="service-desc">Positioning, perception, and market direction.</div>
+                                    </label>
+                                </div>
+                                <div class="service-option featured">
+                                    <input type="radio" id="service2" name="service" value="Full Identity System" required>
+                                    <label for="service2">
+                                        <div class="service-badge">Recommended</div>
+                                        <div class="service-title">Full Identity System</div>
+                                        <div class="service-desc">Complete visual architecture built to scale.</div>
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="radio" id="service3" name="service" value="Design System" required>
+                                    <label for="service3">
+                                        <div class="service-title">Design System</div>
+                                        <div class="service-desc">Scalable components for consistent presence.</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-error service-error">Please select a service plan</div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="form-submit">Initiate Project</button>
+                            <button type="button" class="form-cancel" onclick="clearContactForm()">Clear</button>
+                        </div>
+
+                        <!-- Response Indicator -->
+                        <div class="form-response-indicator">
+                            Usually responds within 24 hours.
+                        </div>
+
+                        <!-- Trust Indicators -->
+                        <div class="form-trust-indicators">
+                            <div class="trust-indicator">Selective collaborations worldwide</div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1756,28 +2039,173 @@
         // Contact Form Functions
         function clearContactForm() {
             document.getElementById('contactForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
+        // Formspree integration - Advanced validation with inline error messages
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-            const formData = {
-                firstName: document.querySelector('input[name="firstName"]').value,
-                lastName: document.querySelector('input[name="lastName"]').value,
-                email: document.querySelector('input[name="email"]').value,
-                phone: document.querySelector('input[name="phone"]').value,
-                service: document.querySelector('input[name="service"]:checked').value
-            };
+            const form = this;
+            const submitButton = document.querySelector('.form-submit');
+            const cancelButton = document.querySelector('.form-cancel');
+            const successMessage = document.getElementById('successMessage');
 
-            // Log the data (in real scenario, send to server)
-            console.log('Form Submitted:', formData);
+            // Clear all previous errors
+            clearAllErrors();
 
-            // Show success message
-            alert(`Thank you for your inquiry!\n\nService: ${formData.service}\n\nWe'll get back to you soon at ${formData.email}`);
+            // Get form values
+            const firstName = form.querySelector('input[name="firstName"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const serviceSelected = document.querySelector('input[name="service"]:checked');
 
-            // Reset form
-            document.getElementById('contactForm').reset();
+            // Validation flags
+            let isValid = true;
+
+            // Validate Name
+            if (!firstName) {
+                showError('firstName-error');
+                form.querySelector('input[name="firstName"]').classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showError('email-error');
+                form.querySelector('input[name="email"]').classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Service Selection
+            if (!serviceSelected) {
+                showError('service-error');
+                document.querySelector('.service-selection').classList.add('error');
+                isValid = false;
+            }
+
+            // If validation failed, stop here
+            if (!isValid) {
+                return;
+            }
+
+            // Form is valid, prepare to submit
+            const formData = new FormData(form);
+
+            // Show loading state
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            cancelButton.disabled = true;
+            submitButton.style.opacity = '0.6';
+
+            try {
+                // Submit form to Formspree
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    clearAllErrors();
+
+                    // Reset button after success
+                    setTimeout(() => {
+                        submitButton.textContent = 'Initiate Project';
+                        submitButton.disabled = false;
+                        cancelButton.disabled = false;
+                        submitButton.style.opacity = '1';
+                    }, 3000);
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Handle error
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'form-error show';
+                    errorMsg.textContent = 'Error submitting form. Please try again.';
+                    form.insertBefore(errorMsg, form.firstChild);
+
+                    submitButton.textContent = 'Initiate Project';
+                    submitButton.disabled = false;
+                    cancelButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                }
+            } catch (error) {
+                // Network error
+                console.error('Form submission error:', error);
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'form-error show';
+                errorMsg.textContent = 'Network error. Please check your connection and try again.';
+                form.insertBefore(errorMsg, form.firstChild);
+
+                submitButton.textContent = 'Initiate Project';
+                submitButton.disabled = false;
+                cancelButton.disabled = false;
+                submitButton.style.opacity = '1';
+            }
+        });
+
+        // Helper function to show error message
+        function showError(errorClass) {
+            const errorElement = document.querySelector('.' + errorClass);
+            if (errorElement) {
+                errorElement.classList.add('show');
+            }
         }
+
+        // Helper function to clear all errors
+        function clearAllErrors() {
+            // Hide all error messages
+            document.querySelectorAll('.form-error').forEach(error => {
+                error.classList.remove('show');
+            });
+
+            // Remove error styling from inputs
+            document.querySelectorAll('#contactForm input').forEach(input => {
+                input.classList.remove('error');
+            });
+
+            // Remove error styling from service selection
+            document.querySelector('.service-selection').classList.remove('error');
+
+            // Remove any dynamically added error messages
+            document.querySelectorAll('#contactForm > .form-error').forEach(error => {
+                error.remove();
+            });
+        }
+
+        // Real-time validation - remove error when user starts typing
+        document.querySelectorAll('#contactForm input[type="text"], #contactForm input[type="email"]').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    const errorMap = {
+                        'firstName': 'firstName-error',
+                        'email': 'email-error'
+                    };
+                    const errorElement = document.querySelector('.' + errorMap[this.name]);
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Real-time validation for service selection
+        document.querySelectorAll('input[name="service"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelector('.service-selection').classList.remove('error');
+                document.querySelector('.service-error').classList.remove('show');
+            });
+        });
     </script>
 </body>
 </html>
