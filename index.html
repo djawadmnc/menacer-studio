@@ -1876,18 +1876,34 @@
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                display: grid;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+                color: var(--white);
+                font-weight: 700;
+            }
+
+            .about-text p {
+                margin-bottom: 1.2rem;
+                line-height: 1.7;
+                font-size: 0.95rem;
             }
 
             .about-image {
-                min-height: 300px;
-                height: 300px;
+                min-height: 280px;
+                height: 280px;
                 border-radius: 12px;
+                margin: 1rem 0;
             }
 
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
                 margin-top: 2rem;
+                display: grid;
             }
 
             .stat-number {
@@ -1902,11 +1918,18 @@
             .logo-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0 1rem;
             }
 
             .logo-item {
                 min-height: 250px;
                 height: 250px;
+            }
+
+            .logo-item.expanded {
+                scroll-margin-top: 100px;
             }
 
             .section-header {
@@ -1968,6 +1991,44 @@
                 animation: none !important;
             }
 
+            /* ===== PROCESS SECTION MOBILE ===== */
+            .process-steps {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .process-step {
+                display: flex;
+                gap: 1.5rem;
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                font-size: 2rem;
+                font-weight: 900;
+                color: var(--cyan);
+                flex-shrink: 0;
+                min-width: 50px;
+                text-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3);
+            }
+
+            .process-step h4 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+                font-weight: 700;
+                color: var(--white);
+                letter-spacing: 0.5px;
+            }
+
+            .process-step p {
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.75);
+                line-height: 1.6;
+                margin: 0;
+            }
+
             /* Preserve entrance animations (keep premium feel) */
             /* cinematicReveal - hero entrance (kept) */
             /* fadeInUp - section reveals (kept) */
@@ -2010,22 +2071,26 @@
                 box-shadow: 0 8px 24px rgba(0, 217, 255, 0.35);
             }
 
-            .whatsapp-button svg {
+            .whatsapp-icon {
                 width: 28px;
                 height: 28px;
+                display: block;
             }
 
             /* ===== CONTACT FORM MOBILE OPTIMIZATION ===== */
             .contact-layout {
+                display: flex;
                 flex-direction: column;
                 gap: 2rem;
             }
 
             .contact-left {
+                order: -1;
                 margin-bottom: 1rem;
             }
 
             .contact-right {
+                order: 0;
                 padding: 0;
             }
 
@@ -2116,23 +2181,38 @@
 
             /* ===== WORK SECTION ===== */
             .work-showcase {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 2rem;
-                margin-bottom: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .work-item-text {
+                text-align: center;
+            }
+
+            .work-item-text h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+                font-weight: 700;
+                color: var(--white);
+            }
+
+            .work-item-text p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+                margin-bottom: 1.2rem;
             }
 
             .work-image {
                 min-height: 280px;
                 height: 280px;
                 border-radius: 8px;
-            }
-
-            .work-item-text h3 {
-                font-size: 1.3rem;
-                margin-bottom: 1rem;
+                margin: 1rem 0;
             }
 
             .work-details {
+                display: grid;
                 grid-template-columns: 1fr;
                 gap: 1rem;
                 margin-top: 1.5rem;
@@ -2542,26 +2622,26 @@
                     <h2>Built From Obsession, Not Trend</h2>
                     <p>MENACER Studio started from a simple belief: most brands don't fail because they lack effort — they fail because they lack clarity. Too many businesses look good for a moment and disappear the next.</p>
                     <p>We built this studio to solve that problem. Not with noise. Not with recycled trends. But with systems that create recognition, trust, and long-term positioning. Every project starts deeper than visuals. We study the business, the audience, the ambition, and the pressure around it. Then we translate all of that into an identity that feels natural, memorable, and built to last.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Projects Developed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Countries Reached</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Custom Built Systems</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Brothers Behind The Studio</div>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-image" style="background: url('images/about us/1.png') center/cover no-repeat;">
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Developed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Countries Reached</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Custom Built Systems</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Brothers Behind The Studio</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2595,45 +2675,49 @@
             <div class="work-showcase">
                 <div class="work-item-text">
                     <h3>Form Academy</h3>
+                </div>
+                <div class="work-item-text">
                     <p>Form Academy was built to make online education feel structured, creative, and human at the same time. The challenge was designing an identity that could communicate learning and ambition without looking corporate or generic.</p>
                     <p>I developed a complete visual system — from logo engineering and brand architecture to the learning interface and social presence — designed to make the platform feel clear, inspiring, and instantly recognizable across every digital touchpoint.</p>
-                    <div class="work-details">
-                        <div class="work-detail">
-                            <div class="work-detail-label">Category</div>
-                            <div class="work-detail-value">Brand Identity</div>
-                        </div>
-                        <div class="work-detail">
-                            <div class="work-detail-label">Scope</div>
-                            <div class="work-detail-value">Branding • UI/UX • Social System</div>
-                        </div>
-                        <div class="work-detail">
-                            <div class="work-detail-label">Industry</div>
-                            <div class="work-detail-value">Online Education</div>
-                        </div>
-                    </div>
                 </div>
                 <div class="work-image" style="background: url('images/Projects Built With Purpose/1.png') center/cover no-repeat;"></div>
+                <div class="work-details">
+                    <div class="work-detail">
+                        <div class="work-detail-label">Category</div>
+                        <div class="work-detail-value">Brand Identity</div>
+                    </div>
+                    <div class="work-detail">
+                        <div class="work-detail-label">Scope</div>
+                        <div class="work-detail-value">Branding • UI/UX • Social System</div>
+                    </div>
+                    <div class="work-detail">
+                        <div class="work-detail-label">Industry</div>
+                        <div class="work-detail-value">Online Education</div>
+                    </div>
+                </div>
             </div>
 
             <div class="work-showcase">
-                <div class="work-image" style="background: url('images/Projects Built With Purpose/2.png') center/cover no-repeat;"></div>
                 <div class="work-item-text">
                     <h3>SevenX</h3>
+                </div>
+                <div class="work-item-text">
                     <p>SevenX was built for riders who move with instinct, precision, and control. The challenge was creating a bold identity that felt aggressive and premium without losing the sense of safety behind the brand.</p>
                     <p>We focused on sharp geometry, contrast, and visual impact. Every element was designed to reflect speed, confidence, and protection while keeping the identity clean, recognizable, and built for the road.</p>
-                    <div class="work-details">
-                        <div class="work-detail">
-                            <div class="work-detail-label">Category</div>
-                            <div class="work-detail-value">Visual Identity</div>
-                        </div>
-                        <div class="work-detail">
-                            <div class="work-detail-label">Scope</div>
-                            <div class="work-detail-value">Full Brand System</div>
-                        </div>
-                        <div class="work-detail">
-                            <div class="work-detail-label">Industry</div>
-                            <div class="work-detail-value">Motorcycle Gear</div>
-                        </div>
+                </div>
+                <div class="work-image" style="background: url('images/Projects Built With Purpose/2.png') center/cover no-repeat;"></div>
+                <div class="work-details">
+                    <div class="work-detail">
+                        <div class="work-detail-label">Category</div>
+                        <div class="work-detail-value">Visual Identity</div>
+                    </div>
+                    <div class="work-detail">
+                        <div class="work-detail-label">Scope</div>
+                        <div class="work-detail-value">Full Brand System</div>
+                    </div>
+                    <div class="work-detail">
+                        <div class="work-detail-label">Industry</div>
+                        <div class="work-detail-value">Motorcycle Gear</div>
                     </div>
                 </div>
             </div>
@@ -2725,7 +2809,7 @@
                     <!-- Country -->
                     <div class="form-group">
                         <select name="country" class="country-select" required>
-                            <option value="">Select Country</option>
+                            <option value="">-</option>
                             <option value="Algeria">Algeria</option>
                             <option value="France">France</option>
                             <option value="United Kingdom">United Kingdom</option>
@@ -2792,9 +2876,7 @@
        class="whatsapp-button"
        title="Message on WhatsApp"
        target="_blank">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.6915026,2.4744748 C15.6693616,0.473392899 12.7771233,0.473392899 10.7549823,2.4744748 C8.47135979,4.75809732 8.47135979,8.5336631 10.7549823,10.8172856 L12.1283332,12.1906365 C12.7734215,12.8357248 13.8315144,12.8357248 14.4766027,12.1906365 L15.0095265,11.6577127 C15.6546148,11.0126244 16.7127077,11.0126244 17.357796,11.6577127 C18.0028843,12.302801 18.0028843,13.3608939 17.357796,14.0059822 L14.0522907,17.3114875 C12.0301497,19.3336285 9.13791137,19.3336285 7.11577035,17.3114875 C4.83214783,15.0278649 4.83214783,11.2522992 7.11577035,8.96867667 L8.48911924,7.59532778 C9.13420759,6.95023943 10.1923005,6.95023943 10.8373888,7.59532778 C11.4824771,8.24041613 11.4824771,9.2985091 10.8373888,9.94359745 L9.46403991,11.3169484 C8.81895156,11.9620367 8.81895156,13.0201296 9.46403991,13.6652179 C10.1091283,14.3103063 11.1672212,14.3103063 11.8123095,13.6652179 L15.1178148,10.3597126 C16.7627299,8.71479747 16.7627299,6.06651281 15.1178148,4.42159768 C13.4729,2.77668255 10.8246153,2.77668255 9.17970021,4.42159768 L7.8063513,5.79494657 C7.16126295,6.4400349 6.10316999,6.4400349 5.45808164,5.79494657 C4.81299329,5.14985822 4.81299329,4.09176527 5.45808164,3.44667692 L6.83143053,2.0733280 C8.85356155,-0.0488030186 11.7457999,-0.0488030186 13.7679409,1.97334801" fill="currentColor"/>
-        </svg>
+        <img src="images/whatsupp icon/whatsapp-white-icon.webp" alt="WhatsApp" class="whatsapp-icon">
     </a>
 
     <!-- Footer -->
@@ -2985,6 +3067,11 @@
                 `;
 
                 element.querySelector('.expanded-content').innerHTML = expandedContent;
+
+                // Scroll card into view on mobile
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
         }
 
