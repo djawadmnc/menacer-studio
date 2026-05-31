@@ -40,8 +40,8 @@
             font-size: 5.5rem;
             font-weight: 800;
             letter-spacing: -3px;
-            line-height: 1;
-            white-space: nowrap;
+            line-height: 1.2;
+            white-space: normal;
         }
 
         h2 {
@@ -1795,6 +1795,11 @@
             z-index: 1;
         }
 
+        /* ===== WHATSAPP BUTTON (DESKTOP: HIDDEN) ===== */
+        .whatsapp-button {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             /* ===== TYPOGRAPHY ===== */
@@ -1919,6 +1924,187 @@
             .section-header p {
                 font-size: 0.95rem;
                 margin-top: 1rem;
+            }
+
+            /* ===== MOBILE PERFORMANCE OPTIMIZATION ===== */
+            /* Remove infinite animations (battery drain) */
+            .hero::before {
+                animation: none !important;
+            }
+
+            .hero::after {
+                animation: none !important;
+            }
+
+            .cta-button span {
+                animation: none !important;
+            }
+
+            .scroll-prompt-text {
+                animation: none !important;
+            }
+
+            .logo-item::before {
+                animation: none !important;
+            }
+
+            .services::before {
+                animation: none !important;
+            }
+
+            .process::before {
+                animation: none !important;
+            }
+
+            .logo-folio::before {
+                animation: none !important;
+            }
+
+            .process-item::after {
+                animation: none !important;
+            }
+
+            .process-item::before {
+                animation: none !important;
+            }
+
+            /* Preserve entrance animations (keep premium feel) */
+            /* cinematicReveal - hero entrance (kept) */
+            /* fadeInUp - section reveals (kept) */
+            /* labelDive - section labels (kept) */
+            /* magneticPull - card entrance (kept) */
+            /* topGlow - glow entrance (kept) */
+            /* fadeInScale - element reveal (kept) */
+            /* ascend - upward entrance (kept) */
+            /* slideIn - quick entrance (kept) */
+            /* countUp - number animation (kept) */
+
+            /* ===== WHATSAPP BUTTON (MOBILE ONLY) ===== */
+            .whatsapp-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                bottom: 2rem;
+                right: 1.5rem;
+                width: 56px;
+                height: 56px;
+                background: #25d366;
+                border-radius: 50%;
+                color: white;
+                text-decoration: none;
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+                transition: all 0.3s ease;
+                z-index: 100;
+            }
+
+            .whatsapp-button:active {
+                transform: scale(0.95);
+                box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            }
+
+            .whatsapp-button svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            /* ===== CONTACT FORM MOBILE OPTIMIZATION ===== */
+            .contact-layout {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .contact-left {
+                margin-bottom: 1rem;
+            }
+
+            .contact-right {
+                padding: 0;
+            }
+
+            #contactForm {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .form-row {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-bottom: 0.5rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 0.875rem;
+                font-size: 1rem;
+                min-height: 44px;
+                border: 1px solid rgba(0, 217, 255, 0.2);
+                border-radius: 6px;
+                background: rgba(10, 14, 39, 0.6);
+                color: white;
+                transition: all 0.3s ease;
+            }
+
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: #00d9ff;
+                background: rgba(10, 14, 39, 0.9);
+                box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+            }
+
+            .form-group textarea {
+                min-height: 120px;
+                resize: vertical;
+                font-family: inherit;
+            }
+
+            .form-submit {
+                padding: 1rem;
+                font-size: 0.95rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                background: #00d9ff;
+                color: #0a0e27;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-height: 44px;
+                margin-top: 0.5rem;
+            }
+
+            .form-submit:active {
+                transform: scale(0.98);
+            }
+
+            .form-error {
+                font-size: 0.75rem;
+                color: #ff6b6b;
+                margin-top: 0.25rem;
+                display: none;
+            }
+
+            .form-error.show {
+                display: block;
             }
 
             /* ===== WORK SECTION ===== */
@@ -2312,467 +2498,15 @@
                 background-position: center;
             }
         }
-
-
-        /* ==================== PHASE 1: MOBILE OPTIMIZATION ==================== */
-        @media (max-width: 768px) {
-
-            /* ===== MOBILE NAVIGATION (NEW) ===== */
-            .mobile-nav-toggle {
-                position: fixed;
-                top: 1rem;
-                right: 1rem;
-                width: 40px;
-                height: 40px;
-                background: transparent;
-                border: 1px solid var(--cyan);
-                border-radius: 4px;
-                cursor: pointer;
-                z-index: 1001;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 4px;
-                transition: all 0.3s ease;
-                padding: 0;
-            }
-
-            .mobile-nav-toggle span {
-                width: 16px;
-                height: 2px;
-                background: var(--cyan);
-                border-radius: 1px;
-                transition: all 0.3s ease;
-            }
-
-            .mobile-nav-toggle.open span:nth-child(1) {
-                transform: rotate(45deg) translateY(8px);
-            }
-
-            .mobile-nav-toggle.open span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-nav-toggle.open span:nth-child(3) {
-                transform: rotate(-45deg) translateY(-8px);
-            }
-
-            .mobile-nav {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: rgba(10, 14, 39, 0.98);
-                backdrop-filter: blur(12px);
-                z-index: 1000;
-                padding: 5rem 1.5rem 2rem;
-                border-bottom: 1px solid rgba(0, 217, 255, 0.1);
-            }
-
-            .mobile-nav.active {
-                display: block;
-            }
-
-            .mobile-nav-list {
-                list-style: none;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .mobile-nav-list a {
-                color: var(--white);
-                text-decoration: none;
-                font-size: 1rem;
-                font-weight: 600;
-                letter-spacing: 0.5px;
-                transition: color 0.3s ease;
-            }
-
-            .mobile-nav-list a:hover {
-                color: var(--cyan);
-            }
-
-            /* ===== HERO MOBILE OPTIMIZATION ===== */
-            h1 {
-                font-size: clamp(2rem, 8vw, 5.5rem);
-                white-space: normal;
-                letter-spacing: -1px;
-            }
-
-            .hero {
-                height: auto;
-                min-height: 85vh;
-                padding: 2rem 1.5rem;
-                align-items: flex-start;
-                justify-content: flex-start;
-                padding-top: 6rem;
-            }
-
-            .hero-bg {
-                background-attachment: scroll;
-                opacity: 0.2;
-            }
-
-            .hero-content {
-                padding: 0;
-                max-width: 100%;
-                width: 100%;
-                text-align: left;
-            }
-
-            .hero h1 {
-                margin-bottom: 1rem;
-                animation: cinematicReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-            }
-
-            .hero .tagline {
-                font-size: 1rem;
-                line-height: 1.6;
-                max-width: 100%;
-                margin-bottom: 2rem;
-                animation: cinematicReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
-            }
-
-            /* ===== MOBILE CTA BUTTONS (NEW) ===== */
-            .hero-cta-mobile {
-                display: flex;
-                gap: 1rem;
-                margin-bottom: 2rem;
-                opacity: 0;
-                animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
-            }
-
-            .btn-primary {
-                flex: 1;
-                padding: 0.75rem 1.5rem;
-                background: var(--cyan);
-                color: var(--navy);
-                border: none;
-                border-radius: 4px;
-                font-weight: 700;
-                font-size: 0.9rem;
-                letter-spacing: 0.5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .btn-primary:active {
-                transform: scale(0.98);
-            }
-
-            .btn-secondary {
-                flex: 1;
-                padding: 0.75rem 1.5rem;
-                background: transparent;
-                color: var(--cyan);
-                border: 1px solid var(--cyan);
-                border-radius: 4px;
-                font-weight: 600;
-                font-size: 0.9rem;
-                letter-spacing: 0.5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .btn-secondary:active {
-                background: rgba(0, 217, 255, 0.1);
-            }
-
-            /* HIDE DESKTOP ELEMENTS ON MOBILE */
-            .scroll-prompt {
-                display: none !important;
-            }
-
-            .swipe-arrow {
-                display: none !important;
-            }
-
-            /* ===== MOBILE TRUST SIGNALS (NEW) ===== */
-            .mobile-trust-section {
-                background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 217, 255, 0.01) 100%);
-                border-top: 1px solid rgba(0, 217, 255, 0.1);
-                border-bottom: 1px solid rgba(0, 217, 255, 0.1);
-                padding: 1.5rem 1rem;
-                margin-bottom: 2rem;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-                animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
-                opacity: 0;
-            }
-
-            .trust-item {
-                text-align: center;
-            }
-
-            .trust-item-number {
-                font-size: 1.8rem;
-                font-weight: 800;
-                color: var(--cyan);
-                margin-bottom: 0.25rem;
-            }
-
-            .trust-item-label {
-                font-size: 0.7rem;
-                color: rgba(255, 255, 255, 0.6);
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                font-weight: 600;
-            }
-
-            /* ===== PERFORMANCE: REDUCE ANIMATIONS ON MOBILE ===== */
-            @keyframes cinematicReveal {
-                0% {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(15px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            /* DISABLE HEAVY ANIMATIONS ON MOBILE */
-            .hero::before {
-                animation: none !important;
-                opacity: 0.03 !important;
-            }
-
-            .hero::after {
-                animation: none !important;
-                opacity: 0 !important;
-            }
-
-            .service-card::before {
-                animation: none !important;
-            }
-
-            .logo-item::before {
-                animation: none !important;
-                opacity: 0 !important;
-            }
-
-            .services::before {
-                animation: none !important;
-                opacity: 0.1 !important;
-            }
-
-            .process::before {
-                animation: none !important;
-                opacity: 0.05 !important;
-            }
-
-            /* REDUCE FIXED BACKGROUNDS ON MOBILE */
-            .logo-folio {
-                background-attachment: scroll !important;
-                background-size: cover;
-            }
-
-            .logo-folio::before {
-                opacity: 0.4 !important;
-            }
-
-            /* REDUCE GLOW/SHADOW EFFECTS ON MOBILE */
-            .cta-button {
-                box-shadow: none !important;
-                border: 2px solid var(--cyan) !important;
-                background: transparent !important;
-            }
-
-            .cta-button:hover {
-                box-shadow: none !important;
-                background: rgba(0, 217, 255, 0.1) !important;
-            }
-
-            .service-card:hover {
-                box-shadow: none !important;
-            }
-
-            .logo-item:hover {
-                box-shadow: none !important;
-            }
-
-            /* OPTIMIZE ANIMATION TIMING FOR MOBILE */
-            .service-card {
-                animation-duration: 0.6s !important;
-            }
-
-            .logo-item {
-                animation-duration: 0.6s !important;
-            }
-
-            /* ===== SERVICES SECTION MOBILE ===== */
-            .services {
-                padding: 4rem 1.5rem !important;
-                clip-path: none !important;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
-            }
-
-            .service-card {
-                padding: 1.5rem !important;
-            }
-
-            .service-card h3 {
-                font-size: 1.1rem !important;
-            }
-
-            .service-card p {
-                font-size: 0.95rem !important;
-            }
-
-            .service-card:hover {
-                transform: none !important;
-            }
-
-            /* ===== PORTFOLIO SECTION MOBILE ===== */
-            .work {
-                padding: 4rem 1.5rem !important;
-                clip-path: none !important;
-            }
-
-            .work-showcase {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-                margin-bottom: 3rem !important;
-            }
-
-            .work-image {
-                height: 300px !important;
-            }
-
-            .work-details {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 1rem !important;
-            }
-
-            /* ===== PORTFOLIO GALLERY MOBILE ===== */
-            .logo-folio {
-                padding: 4rem 1.5rem !important;
-                clip-path: none !important;
-            }
-
-            .logo-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
-            }
-
-            .logo-item {
-                min-height: 150px !important;
-            }
-
-            .expanded-content {
-                padding: 1.5rem !important;
-            }
-
-            .expanded-details {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* ===== PROCESS SECTION MOBILE ===== */
-            .process {
-                padding: 4rem 1.5rem !important;
-                clip-path: none !important;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-
-            .process-item {
-                padding: 2rem 1.5rem !important;
-            }
-
-            .process-item::after {
-                display: none !important;
-            }
-
-            /* ===== GENERAL MOBILE TYPOGRAPHY ===== */
-            h2 {
-                font-size: clamp(1.4rem, 6vw, 3.2rem) !important;
-            }
-
-            h3 {
-                font-size: clamp(1rem, 4vw, 1.8rem) !important;
-            }
-
-            p {
-                font-size: 0.95rem !important;
-                line-height: 1.7 !important;
-            }
-
-            /* ===== SECTION SPACING MOBILE ===== */
-            section {
-                margin-bottom: 1rem !important;
-            }
-
-            .container {
-                max-width: 100% !important;
-                padding: 0 1.5rem !important;
-            }
-
-        }
-
     </style>
 </head>
 <body>
-    <!-- PHASE 1: MOBILE NAVIGATION (NEW) -->
-    <button class="mobile-nav-toggle" id="mobileNavToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav class="mobile-nav" id="mobileNav">
-        <ul class="mobile-nav-list">
-            <li><a href="#about" onclick="closeMobileNav()">About</a></li>
-            <li><a href="#work" onclick="closeMobileNav()">Work</a></li>
-            <li><a href="#process" onclick="closeMobileNav()">Process</a></li>
-            <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
-        </ul>
-    </nav>
-
     <!-- ACT I: Entry -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>MENACER STUDIO</h1>
-            <p class="tagline">Strategic Branding & Digital Systems For Premium Brands</p>
-            <!-- PHASE 1: MOBILE CTA BUTTONS (NEW) -->
-            <div class="hero-cta-mobile">
-                <button class="btn-primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Start Project</button>
-                <button class="btn-secondary" onclick="document.querySelector('#work').scrollIntoView({behavior:'smooth'})">View Work</button>
-            </div>
-
-            <!-- PHASE 1: MOBILE TRUST SIGNALS (NEW) -->
-            <div class="mobile-trust-section">
-                <div class="trust-item">
-                    <div class="trust-item-number">50+</div>
-                    <div class="trust-item-label">Projects Delivered</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-item-number">24h</div>
-                    <div class="trust-item-label">Response Time</div>
-                </div>
-            </div>
-
+            <p class="tagline">Identity systems that create clarity, trust, and long-term recognition.</p>
             <div class="swipe-arrow" onclick="document.querySelector('.logo-folio').scrollIntoView({behavior:'smooth'})">
                 <div class="arrow-chevron">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2981,27 +2715,26 @@
                         </div>
                     </div>
 
-                    <!-- Phone & Country -->
-                    <div class="form-row">
-                        <div class="form-group country-group">
-                            <select name="country" class="country-select" required>
-                                <option value="">-</option>
-                                <option value="+213">+213 Algeria</option>
-                                <option value="+33">+33 France</option>
-                                <option value="+44">+44 United Kingdom</option>
-                                <option value="+1">+1 United States</option>
-                                <option value="+44">+44 Ireland</option>
-                                <option value="+49">+49 Germany</option>
-                                <option value="+39">+39 Italy</option>
-                                <option value="+34">+34 Spain</option>
-                                <option value="+32">+32 Belgium</option>
-                            </select>
-                            <label>Country Code</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder=" " name="phone">
-                            <label>Phone (Optional)</label>
-                        </div>
+                    <!-- Country -->
+                    <div class="form-group">
+                        <select name="country" class="country-select" required>
+                            <option value="">Select Country</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="France">France</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label>Country</label>
+                        <div class="form-error country-error">Country is required</div>
                     </div>
 
                     <!-- Project Description -->
@@ -3045,6 +2778,17 @@
             </div>
         </div>
     </section>
+
+    <!-- WhatsApp Button (Mobile Only) -->
+    <a href="https://wa.me/213700000000?text=Hi%20MENACER%20Studio%2C%20I%27d%20like%20to%20discuss%20a%20project"
+       id="whatsappButton"
+       class="whatsapp-button"
+       title="Message on WhatsApp"
+       target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.6915026,2.4744748 C15.6693616,0.473392899 12.7771233,0.473392899 10.7549823,2.4744748 C8.47135979,4.75809732 8.47135979,8.5336631 10.7549823,10.8172856 L12.1283332,12.1906365 C12.7734215,12.8357248 13.8315144,12.8357248 14.4766027,12.1906365 L15.0095265,11.6577127 C15.6546148,11.0126244 16.7127077,11.0126244 17.357796,11.6577127 C18.0028843,12.302801 18.0028843,13.3608939 17.357796,14.0059822 L14.0522907,17.3114875 C12.0301497,19.3336285 9.13791137,19.3336285 7.11577035,17.3114875 C4.83214783,15.0278649 4.83214783,11.2522992 7.11577035,8.96867667 L8.48911924,7.59532778 C9.13420759,6.95023943 10.1923005,6.95023943 10.8373888,7.59532778 C11.4824771,8.24041613 11.4824771,9.2985091 10.8373888,9.94359745 L9.46403991,11.3169484 C8.81895156,11.9620367 8.81895156,13.0201296 9.46403991,13.6652179 C10.1091283,14.3103063 11.1672212,14.3103063 11.8123095,13.6652179 L15.1178148,10.3597126 C16.7627299,8.71479747 16.7627299,6.06651281 15.1178148,4.42159768 C13.4729,2.77668255 10.8246153,2.77668255 9.17970021,4.42159768 L7.8063513,5.79494657 C7.16126295,6.4400349 6.10316999,6.4400349 5.45808164,5.79494657 C4.81299329,5.14985822 4.81299329,4.09176527 5.45808164,3.44667692 L6.83143053,2.0733280 C8.85356155,-0.0488030186 11.7457999,-0.0488030186 13.7679409,1.97334801" fill="currentColor"/>
+        </svg>
+    </a>
 
     <!-- Footer -->
     <footer>
@@ -3538,247 +3282,6 @@
                 }
             });
         }
-
-        // ===== PHASE 1: MOBILE NAVIGATION JAVASCRIPT =====
-        const mobileNavToggle = document.getElementById('mobileNavToggle');
-        const mobileNav = document.getElementById('mobileNav');
-
-        if (mobileNavToggle) {
-            mobileNavToggle.addEventListener('click', function() {
-                this.classList.toggle('open');
-                mobileNav.classList.toggle('active');
-            });
-        }
-
-        function closeMobileNav() {
-            if (mobileNavToggle) {
-                mobileNavToggle.classList.remove('open');
-            }
-            if (mobileNav) {
-                mobileNav.classList.remove('active');
-            }
-        }
-
-        // Close nav on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMobileNav();
-            }
-        
-    /* ===== PHASE 3: CONTACT SECTION MOBILE OPTIMIZATION ===== */
-    
-    /* Contact Section Container */
-    .contact .container {
-        padding: 0 1.5rem !important;
-        max-width: 100% !important;
-    }
-    
-    /* Contact Layout - Stack vertically on mobile */
-    .contact-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 2rem !important;
-    }
-    
-    .contact-left {
-        width: 100% !important;
-        margin-right: 0 !important;
-    }
-    
-    .contact-right {
-        width: 100% !important;
-    }
-    
-    /* Contact Heading */
-    .contact h2 {
-        font-size: clamp(1.4rem, 6vw, 3.2rem) !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .contact-intro {
-        font-size: 0.95rem !important;
-        line-height: 1.7 !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* Contact Form Styling */
-    #contactForm {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.25rem !important;
-    }
-    
-    .form-group {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 0.5rem !important;
-    }
-    
-    .contact-form label,
-    #contactForm label {
-        font-size: 0.9rem !important;
-        color: #c0c0c0 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        font-weight: 500 !important;
-    }
-    
-    #contactForm input,
-    #contactForm textarea {
-        width: 100% !important;
-        padding: 0.875rem !important;
-        font-size: 0.95rem !important;
-        border: 1px solid rgba(0, 217, 255, 0.2) !important;
-        border-radius: 8px !important;
-        background: rgba(10, 14, 39, 0.6) !important;
-        color: #e0e0e0 !important;
-        font-family: inherit !important;
-        line-height: 1.5 !important;
-        transition: all 0.3s ease !important;
-        box-sizing: border-box !important;
-    }
-    
-    #contactForm input::placeholder,
-    #contactForm textarea::placeholder {
-        color: rgba(224, 224, 224, 0.35) !important;
-    }
-    
-    #contactForm input:focus,
-    #contactForm textarea:focus {
-        outline: none !important;
-        border-color: #00d9ff !important;
-        background: rgba(10, 14, 39, 0.9) !important;
-        box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1) !important;
-    }
-    
-    #contactForm textarea {
-        min-height: 140px !important;
-        resize: vertical !important;
-    }
-    
-    /* Form Submit Button */
-    .contact-form-submit,
-    #contactForm button {
-        width: 100% !important;
-        padding: 1rem !important;
-        font-size: 0.95rem !important;
-        background: #00d9ff !important;
-        color: #0a0e27 !important;
-        border: none !important;
-        border-radius: 8px !important;
-        cursor: pointer !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.1em !important;
-        transition: all 0.3s ease !important;
-        margin-top: 0.5rem !important;
-    }
-    
-    .contact-form-submit:active,
-    #contactForm button:active {
-        transform: scale(0.98) !important;
-    }
-    
-    /* Contact Info Section */
-    .contact-info-block {
-        padding: 1.5rem !important;
-        border-radius: 12px;
-        background: rgba(0, 217, 255, 0.03);
-        border: 1px solid rgba(0, 217, 255, 0.1);
-    }
-    
-    .contact-info-block h3 {
-        font-size: clamp(1.1rem, 4vw, 1.8rem);
-        margin-bottom: 1.5rem !important;
-        color: #00d9ff;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-    }
-    
-    /* Contact Method */
-    .contact-method {
-        margin-bottom: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
-        border-bottom: 1px solid rgba(0, 217, 255, 0.1) !important;
-    }
-    
-    .contact-method:last-child {
-        margin-bottom: 0 !important;
-        padding-bottom: 0 !important;
-        border-bottom: none !important;
-    }
-    
-    .contact-method-label {
-        font-size: 0.85rem !important;
-        color: #888 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        margin-bottom: 0.5rem !important;
-    }
-    
-    .contact-method-value {
-        font-size: 0.95rem !important;
-        color: #e0e0e0 !important;
-        line-height: 1.6 !important;
-    }
-    
-    /* WhatsApp CTA Button */
-    .whatsapp-cta {
-        display: inline-block !important;
-        width: 100% !important;
-        margin-top: 1.5rem !important;
-    }
-    
-    .whatsapp-button,
-    .contact-method-value a {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 0.75rem !important;
-        width: 100% !important;
-        padding: 0.875rem !important;
-        background: #25d366 !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 8px !important;
-        font-size: 0.95rem !important;
-        font-weight: 700 !important;
-        text-decoration: none !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-    }
-    
-    .whatsapp-button:active,
-    .contact-method-value a:active {
-        transform: scale(0.96) !important;
-        opacity: 0.9 !important;
-    }
-    
-    .whatsapp-icon {
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Remove decorative elements on mobile */
-    .contact::before,
-    .contact::after,
-    .contact .container::before {
-        display: none !important;
-    }
-    
-    /* Responsive section padding */
-    .contact {
-        padding: 4rem 0 !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    /* ===== END PHASE 3 ===== });
-
     </script>
 </body>
-</html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
