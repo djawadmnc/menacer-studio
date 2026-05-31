@@ -1989,18 +1989,25 @@
                 right: 1.5rem;
                 width: 56px;
                 height: 56px;
-                background: #25d366;
+                background: var(--cyan);
+                border: 1px solid rgba(0, 217, 255, 0.3);
                 border-radius: 50%;
-                color: white;
+                color: var(--navy);
                 text-decoration: none;
-                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+                box-shadow: 0 4px 12px rgba(0, 217, 255, 0.25);
+                backdrop-filter: blur(12px);
                 transition: all 0.3s ease;
                 z-index: 100;
             }
 
             .whatsapp-button:active {
                 transform: scale(0.95);
-                box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+                box-shadow: 0 2px 8px rgba(0, 217, 255, 0.15);
+            }
+
+            .whatsapp-button:hover {
+                background: rgba(0, 217, 255, 0.9);
+                box-shadow: 0 8px 24px rgba(0, 217, 255, 0.35);
             }
 
             .whatsapp-button svg {
@@ -2317,8 +2324,8 @@
 
             .service-option-compact label {
                 display: block;
-                padding: 1rem 0.8rem;
-                min-height: 90px;
+                padding: 1.25rem 0.8rem;
+                min-height: 56px;
                 background: rgba(0, 217, 255, 0.04);
                 border: 1px solid rgba(0, 217, 255, 0.1);
                 border-radius: 4px;
